@@ -38,7 +38,7 @@ return {
         pattern = self.ft,
         group = vim.api.nvim_create_augroup("nvim-metals", { clear = true }),
         desc = "Initialize and attach nvim-metals",
-        callback = function() require("metals").initialize_or_attach(opts) end,
+        callback = vim.schedule_wrap(function() require("metals").initialize_or_attach(opts) end),
       })
     end,
   },
